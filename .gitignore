@@ -1,0 +1,4 @@
+/Back-end/**/target/
+/.idea/
+/*.iml
+*.log

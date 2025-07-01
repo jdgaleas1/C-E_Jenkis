@@ -1,0 +1,27 @@
+
+services:
+  ordenes:
+    build: ./ordenes
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ordenes-db:5432/ordenes
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+    depends_on:
+      - ordenes-db
+      - rabbitmq
+
+  ordenes-db:
+    image: postgres:17
+    container_name: ordenes-db
+    environment:
+      POSTGRES_DB: ordenes
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "${ORDENES_DB_PORT}:5432"
+    volumes:
+      - ordenes_data:/var/lib/postgresql/data
+volumes:
+  ordenes_data:
