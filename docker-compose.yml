@@ -9,6 +9,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=admin
     depends_on:
       - ordenes1-db
+
   ordenes1-db:
     image: postgres:17
     container_name: ordenes1-db
@@ -20,5 +21,16 @@ services:
       - "5433:5432"
     volumes:
       - ordenes1_data:/var/lib/postgresql/data
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    restart: unless-stopped
+
 volumes:
   ordenes1_data:
+  jenkins_home:
