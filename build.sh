@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MICROSERVICIOS=("ordenes")
+MICROSERVICIOS=("ordenes1")
 
 echo "🔧 Compilando microservicios con Maven..."
 

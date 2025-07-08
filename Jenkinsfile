@@ -14,12 +14,12 @@ pipeline {
         }
         stage('Compilar') {
             steps {
-                sh './build-all.sh'
+                sh './build.sh'
             }
         }
         stage('Test (opcional)') {
             steps {
-                echo 'Aquí puedes agregar pruebas si las tienes'
+                sh 'mvn test'
             }
         }
         stage('Levantar servicios') {
