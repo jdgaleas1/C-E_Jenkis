@@ -23,7 +23,8 @@ pipeline {
 
         stage('Levantar servicios') {
             steps {
-                sh './reset.sh'
+                sh 'docker-compose down && docker volume rm ordenes1_data || true && docker-compose up -d --build'
+
             }
         }
     }
