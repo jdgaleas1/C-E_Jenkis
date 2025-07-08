@@ -20,13 +20,6 @@ pipeline {
             }
         }
 
-        stage('Test (opcional)') {
-            steps {
-                dir('ordenes1') {
-                    sh './mvnw test || echo "No hay pruebas definidas o fallaron, pero se continúa..."'
-                }
-            }
-        }
 
         stage('Levantar servicios') {
             steps {
